@@ -2,3 +2,4 @@ openai==0.28
 langchain
 streamlit
 pre-commit
+nemoguardrails

@@ -18,7 +18,7 @@ Progress
 
 - [x] Basic chat interface 
 - [x] OpenAI API Integration
-- [ ] Safe-guarding for unrelated questions
+- [x] Safe-guarding for unrelated questions
 - [ ] Realtime currency converter
 - [ ] Financial document upload
 - [ ] Support for changing models
