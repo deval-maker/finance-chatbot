@@ -15,17 +15,18 @@ Main Features
 
 
 Progress
-[x] Basic chat interface 
-[x] OpenAI API Integration
-[ ] Safe-guarding for unrelated questions
-[ ] Realtime currency converter
-[ ] Financial document upload
-[ ] Support for changing models
-[ ] NeMo API Integration
-[ ] Everything with Ray framework
-[ ] Finetune on custom catagory dataset
-[ ] Ray Model Serve
-[ ] Triton Serve
+
+- [x] Basic chat interface 
+- [x] OpenAI API Integration
+- [ ] Safe-guarding for unrelated questions
+- [ ] Realtime currency converter
+- [ ] Financial document upload
+- [ ] Support for changing models
+- [ ] NeMo API Integration
+- [ ] Everything with Ray framework
+- [ ] Finetune on custom catagory dataset
+- [ ] Ray Model Serve
+- [ ] Triton Serve
 
 
 ## Installation
