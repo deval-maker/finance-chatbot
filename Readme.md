@@ -1,32 +1,16 @@
-# Personal Financial Advisor App
+# LLM Sandbox
 
-This is a chatbot app that does tracks all your expences and provides insights.
-
-Main Features
-1. **Expense Tracking and Categorization**
-   - **Description:** Allow the user to input daily expenses in natural language and/or PDF format from bank/credit card companies. The chatbot will interpret the input, categorize and store them for future reference. Provide a summary of daily, weekly, or monthly expenses.
-   - **Prompt Example:** "I spent $50 on groceries yesterday."
-   - **Prompt Example:** Upload monthly statement PDF from chase bank.
-
-
-2. **Currency Conversion:**
-   - **Description:** Convert currencies based on real-time exchange rates. Users can inquire about currency conversions between different currencies.
-   - **Prompt Example:** "How much is 1000 INR in US dollars?"
-
+This repo is for experimenting with llm and related infrastructure. Goal is to learn as much about LLM chatbots, RAG, Langchain, NeMo, Triton and other tools.
 
 Progress
 
-- [x] Basic chat interface 
+- [x] Base chat interface
 - [x] OpenAI API Integration
 - [x] Safe-guarding for unrelated questions
-- [ ] Realtime currency converter
-- [ ] Financial document upload
-- [ ] Support for changing models
-- [ ] NeMo API Integration
-- [ ] Everything with Ray framework
-- [ ] Finetune on custom catagory dataset
-- [ ] Ray Model Serve
-- [ ] Triton Serve
+- [ ] Document and Code repository upload
+- [ ] Local model serve using Triton
+- [ ] Finetune on custom dataset
+- [x] Realtime natural language currency converter
 
 
 ## Installation
@@ -34,13 +18,13 @@ Progress
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/deval-maker/finance-chatbot.git
+   git clone https://github.com/deval-maker/llm-sandbox.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd finance-chatbot
+   cd llm-sandbox
    ```
 
 3. Create a virtual environment (optional but recommended):

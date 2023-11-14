@@ -3,3 +3,5 @@ langchain
 streamlit
 pre-commit
 nemoguardrails
+forex-python
+yfinance
