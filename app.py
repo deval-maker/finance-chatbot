@@ -1,10 +1,12 @@
 import streamlit as st
-from llm_agent import get_llm_chain_and_memory
+
+from llm_agent import get_retreiver_chain
+
 
 st.set_page_config(page_title="StreamlitChatMessageHistory", page_icon="📖")
 st.title("📖 StreamlitChatMessageHistory")
 
-llm_chain, msgs = get_llm_chain_and_memory()
+llm_chain, msgs = get_retreiver_chain()
 
 if len(msgs.messages) == 0:
     msgs.add_ai_message("How can I help you?")

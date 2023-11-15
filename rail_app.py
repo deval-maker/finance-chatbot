@@ -1,8 +1,9 @@
+import asyncio
 
 from langchain.prompts import PromptTemplate
 import openai
 import streamlit as st
-import asyncio
+
 
 def get_or_create_eventloop():
     try:
@@ -13,20 +14,19 @@ def get_or_create_eventloop():
             asyncio.set_event_loop(loop)
             return asyncio.get_event_loop()
 
+
 loop = get_or_create_eventloop()
 asyncio.set_event_loop(loop)
 
 from langchain.chains import ConstitutionalChain
 from langchain.chains.constitutional_ai.models import ConstitutionalPrinciple
-
 from nemoguardrails import LLMRails, RailsConfig
 from nemoguardrails.rails.llm.context_var_chain import ContextVarChain
 
-from constants import COLANG_CONFIG, YAML_CONFIG, template, openai_api_key
+from constants import COLANG_CONFIG, openai_api_key, template, YAML_CONFIG
 
 
 def get_model(model_name):
-
     config = RailsConfig.from_content(COLANG_CONFIG, YAML_CONFIG)
 
     app = LLMRails(config)
