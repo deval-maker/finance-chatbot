@@ -1,6 +1,6 @@
 import streamlit as st
 
-from llm_agent import get_retreiver_chain
+from llm_agent import get_retreiver_chain, get_llm_chain_and_memory
 
 
 st.set_page_config(page_title="StreamlitChatMessageHistory", page_icon="📖")
@@ -17,5 +17,5 @@ for msg in msgs.messages:
 # If user inputs a new prompt, generate and draw a new response
 if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
-    response = llm_chain.run(prompt)
-    st.chat_message("ai").write(response)
+    response = llm_chain({"chat_history": msgs.messages, "question": prompt})
+    st.chat_message("ai").write(response["answer"])

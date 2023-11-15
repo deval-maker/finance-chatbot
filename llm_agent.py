@@ -9,7 +9,6 @@ from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder, PromptTemplate
 from langchain.schema import Document
-from langchain.schema.embeddings import Embeddings
 from langchain.schema.language_model import BaseLanguageModel
 from langchain.schema.messages import AIMessage, HumanMessage
 from langchain.schema.output_parser import StrOutputParser
@@ -17,6 +16,7 @@ from langchain.schema.retriever import BaseRetriever
 from langchain.schema.runnable import Runnable, RunnableBranch, RunnableLambda, RunnableMap
 from langchain.vectorstores import Weaviate
 import weaviate
+from langchain.chains import ConversationalRetrievalChain
 
 from constants import (
     REPHRASE_TEMPLATE,
@@ -47,16 +47,25 @@ def get_llm_chain_and_memory():
 
 
 def get_retreiver_chain():
-    llm, msgs = get_llm_chain_and_memory()
+    openai_api_key = os.environ.get("OPENAI_API_KEY")
+    llm = ChatOpenAI(
+        openai_api_key=openai_api_key,
+        model="gpt-3.5-turbo-16k",
+        temperature=0,
+        streaming=True,
+    )
     retriever = get_retriever()
     answer_chain = create_chain(
         llm,
         retriever,
     )
-    return answer_chain, msgs
+    model = ChatOpenAI(model='gpt-3.5-turbo') # switch to 'gpt-4'
+
+    qa = ConversationalRetrievalChain.from_llm(model, retriever=retriever)
+    return qa, StreamlitChatMessageHistory(key="langchain_messages")
 
 
-def get_embeddings_model() -> Embeddings:
+def get_embeddings_model():
     return OpenAIEmbeddings(chunk_size=200)
 
 
