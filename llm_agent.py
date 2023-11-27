@@ -47,22 +47,11 @@ def get_llm_chain_and_memory():
 
 
 def get_retreiver_chain():
-    openai_api_key = os.environ.get("OPENAI_API_KEY")
-    llm = ChatOpenAI(
-        openai_api_key=openai_api_key,
-        model="gpt-3.5-turbo-16k",
-        temperature=0,
-        streaming=True,
-    )
+    msgs = StreamlitChatMessageHistory(key="langchain_messages")
     retriever = get_retriever()
-    answer_chain = create_chain(
-        llm,
-        retriever,
-    )
-    model = ChatOpenAI(model='gpt-3.5-turbo') # switch to 'gpt-4'
-
+    model = ChatOpenAI(model='gpt-3.5-turbo-16k') # switch to 'gpt-4'
     qa = ConversationalRetrievalChain.from_llm(model, retriever=retriever)
-    return qa, StreamlitChatMessageHistory(key="langchain_messages")
+    return qa, msgs
 
 
 def get_embeddings_model():
